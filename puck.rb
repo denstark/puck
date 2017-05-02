@@ -1,21 +1,27 @@
 require 'discordrb'
 require_relative 'commands.rb'
 
-bot = Discordrb::Bot.new token: 'Mjk1OTkzMTYyMjAyMzQ5NTc4.C7rwyw.ceFMkK-7TBhTGf2jqpO9YqbcrwA', client_id: 295993162202349578
+puck = Discordrb::Bot.new token: 'MzA5MDE1OTI1OTAwNzA1Nzky.C-pRDA.m4-yZozL1C2nPaCFeEG1XNtlJMY', client_id: 309015925900705792
 
 
-bot.message() do |event|
+puck.message() do |event|
   puts event.content
-  if $commands.key?(event.content)
+  if ! /^p\!.+/.match(event.content)
+    next
+  end
+  command = event.content.gsub(/^p\!/, "")
+  puts "command: #{command}"
+  if $commands.key?(command)
     puts "found"
-    event.respond($commands[event.content][:output])
-  elsif event.content = "p!help" then
-        
+    event.respond(send(command))
+  elsif event.content == "p!help" then
+    puts "Help message"
   else
     puts "not found"
   end
 end
+puts "This bot's invite URL is #{puck.invite_url}."
 
 
 
-bot.run
+puck.run
