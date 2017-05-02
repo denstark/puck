@@ -5,7 +5,7 @@ puck = Discordrb::Bot.new token: 'MzA5MDE1OTI1OTAwNzA1Nzky.C-pRDA.m4-yZozL1C2nPa
 
 
 puck.message() do |event|
-  puts event.content
+  puts "#{event.user.name}: #{event.content}"
   if ! /^p\!.+/.match(event.content)
     next
   end
@@ -14,8 +14,6 @@ puck.message() do |event|
   if $commands.key?(command)
     puts "found"
     event.respond(send(command))
-  elsif event.content == "p!help" then
-    puts "Help message"
   else
     puts "not found"
   end
