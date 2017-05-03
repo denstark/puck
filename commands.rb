@@ -3,7 +3,8 @@ $commands = {
   "help" => "this help message",
   "xkcd" => "Get a random xkcd",
   "qwantz" => "Get a random dinosaurcomic",
-  "fortune" => "Get a drop of wisdom"
+  "fortune" => "Get a drop of wisdom",
+  "quote" => "Get a quote or add a quote with 'quote add'",
 }
 
 $puck.command :goodshit do |event|
@@ -51,6 +52,6 @@ $puck.command :quote do |event, *args|
     File.foreach(QUOTES_FILE).each_with_index do |line, number|
       chosen_quote = line if rand < 1.0/(number+1)
     end
-    "`#{chosen_quote}`"
+    "#{chosen_quote}"
   end
 end
