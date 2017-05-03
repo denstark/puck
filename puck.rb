@@ -1,7 +1,8 @@
 require 'discordrb'
 require_relative 'commands.rb'
+require_relative 'config.rb'
 
-puck = Discordrb::Bot.new token: 'MzA5MDE1OTI1OTAwNzA1Nzky.C-pRDA.m4-yZozL1C2nPaCFeEG1XNtlJMY', client_id: 309015925900705792
+puck = Discordrb::Bot.new token: DISCORD_TOKEN, client_id: DISCORD_CLIENT_ID
 
 
 puck.message() do |event|
