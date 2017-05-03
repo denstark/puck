@@ -17,7 +17,8 @@ $puck.command :help do |event|
     output += "p!#{key} - #{val}\n"
   end
   output += "```"
-  output
+  event.user.pm(output)
+  nil
 end
 
 $puck.command :xkcd do |event|
