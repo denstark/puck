@@ -37,3 +37,20 @@ $puck.command :fortune do |event|
   output += "```"
   output
 end
+
+$puck.command :quote do |event, *args|
+  if args[0] == "add"
+    args.shift
+    quote = args.join(' ')
+    open(QUOTES_FILE, 'a') do |f|
+      f.puts quote
+    end
+    "Quote added!"
+  elsif args.empty?
+    chosen_quote = nil
+    File.foreach(QUOTES_FILE).each_with_index do |line, number|
+      chosen_quote = line if rand < 1.0/(number+1)
+    end
+    "`#{chosen_quote}`"
+  end
+end
