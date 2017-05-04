@@ -6,6 +6,7 @@ $commands = {
   "fortune" => "Get a drop of wisdom",
   "quote" => "Get a quote or add a quote with 'quote add'",
   "trout" => "Slap someone with a trout",
+  "coin" => "Get a coinflip",
 }
 
 $puck.command :goodshit do |event|
@@ -60,4 +61,16 @@ end
 
 $puck.command :trout do |event, *args|
   "#{event.user.name} slaps #{args[0]} around with a large trout."
+end
+
+$puck.command :coin do |event|
+  r = rand
+  puts r
+  coin = nil
+  if r <= 0.5
+    coin = "Heads"
+  else
+    coin = "Tails"
+  end
+  "**#{event.user.name}** flipped a coin and it landed **#{coin.upcase}**"
 end
