@@ -5,6 +5,7 @@ $commands = {
   "qwantz" => "Get a random dinosaurcomic",
   "fortune" => "Get a drop of wisdom",
   "quote" => "Get a quote or add a quote with 'quote add'",
+  "trout" => "Slap someone with a trout",
 }
 
 $puck.command :goodshit do |event|
@@ -55,4 +56,8 @@ $puck.command :quote do |event, *args|
     end
     "#{chosen_quote}"
   end
+end
+
+$puck.command :trout do |event, *args|
+  "#{event.user.name} slaps #{args[0]} around with a large trout."
 end
