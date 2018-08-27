@@ -1,6 +1,6 @@
 TODO:
 - Update to be able to be in multiple servers at a time
-
+- Refactor commands to have one per file, in commands directory with all files in that directory included by the main puck.rb
+- Refactor help command to use built in usage attribute (see: https://www.rubydoc.info/gems/discordrb/Discordrb%2FCommands%2FCommandContainer%3Acommand)
 Ideas:
 - Upload a random berserk page?
-- Magic 8 ball functionality
