@@ -11,5 +11,5 @@ yum -y -q install git
 yum -y -q install tmux
 su - vagrant -c 'echo "source /opt/rh/rh-ruby23/enable" >> ~/.bashrc'
 su - vagrant -c 'gem install bundler'
-su - vagrant -c 'gem install nokogiri -- --use-system-libraries'
+su - vagrant -c 'gem install nokogiri'
 su - vagrant -c 'gem install rails --no-ri --no-rdoc'
