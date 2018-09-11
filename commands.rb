@@ -8,6 +8,7 @@ $commands = {
   "trout" => "Slap someone with a trout",
   "coin" => "Get a coinflip",
   "8ball" => "Ask the magic 8 ball a question",
+  "timeat" => "Get the time from a city's time zone",
 }
 
 $puck.command :goodshit do |event|
