@@ -113,7 +113,8 @@ $puck.command :timeat do |event, *args|
    return
  end
  city = args[0]
- city.downcase
+ city = city.downcase
+ puts city
  case city
  when "london"
    offset = "+00:00"
