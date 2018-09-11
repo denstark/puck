@@ -6,3 +6,5 @@ Ideas:
 - Upload a random berserk page?
 - Create a p!top command that tracks users scores by the number of characters they've typed
 - Weather command (fetches data from openweathermap.org) w/ air quality index (aqi)
+- Search the quote DB to see if a string exists
+- Delete quotes?
