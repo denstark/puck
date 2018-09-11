@@ -8,6 +8,7 @@ $commands = {
   "trout" => "Slap someone with a trout",
   "coin" => "Get a coinflip",
   "8ball" => "Ask the magic 8 ball a question",
+  "timeat" => "Get the time from a city's time zone",
 }
 
 $puck.command :goodshit do |event|
@@ -103,4 +104,30 @@ $puck.command :coin do |event|
     coin = "Tails"
   end
   "**#{event.user.name}** flipped a coin and it landed **#{coin.upcase}**"
+end
+
+$puck.command :timeat do |event, *args|
+ offset = nil
+ if args.empty?
+   event << "You have to put in a city"
+   return
+ end
+ city = args[0]
+ city.downcase
+ case city
+ when "london"
+   offset = "+00:00"
+ when "seattle"
+   offset = "-09:00"
+ when "philadelphia"
+   offset = "-04:00"
+ when "philly"
+   offset = "-04:00"
+ when "boston"
+   offset = "-04:00"
+ else
+   event << "Arguments are London, Philadelphia, Boston"
+   return
+ end
+ "The time in #{city.capitalize} is " + Time.now.getlocal(offset).strftime("%a %I:%M%p").to_s
 end
