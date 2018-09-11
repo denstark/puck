@@ -113,17 +113,14 @@ $puck.command :timeat do |event, *args|
    return
  end
  city = args[0]
- city.downcase
+ city = city.downcase
+ puts city
  case city
  when "london"
    offset = "+00:00"
  when "seattle"
    offset = "-09:00"
- when "philadelphia"
-   offset = "-04:00"
- when "philly"
-   offset = "-04:00"
- when "boston"
+ when "philadelphia", "philly", "boston"
    offset = "-04:00"
  else
    event << "Arguments are London, Philadelphia, Boston"
