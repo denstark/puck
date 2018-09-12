@@ -1,4 +1,5 @@
-source "https://rubygems.com"
+source 'https://rubygems.org'
 
 gem "discordrb"
 gem "sqlite3"
+gem "require_all"
