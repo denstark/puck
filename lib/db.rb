@@ -15,12 +15,14 @@ def topAddScore(params = {})
   disc = params[:disc]
   server = params[:server]
   score = params[:score]
-  $db.execute("UPDATE top SET score = score + ? WHERE discriminator = ? AND name = ? AND server = ?;", [score, disc, name, server])
+  top = DB[:top]
+  top.where(name: name, discriminator: disc, server: server).update(score: Sequel[:score] + score)
 end
 
 def topAddNewUser(params = {})
   name = params[:name]
   disc = params[:disc]
   server = params[:server]
-  $db.execute("INSERT INTO top(name, discriminator, server, last_seen) VALUES(?, ?, ?, ?);", [name, disc, server, Time.now.to_i])
+  top = DB[:top]
+  top.insert(name: name, discriminator: disc, server: server, last_seen: Time.now.to_i)
 end

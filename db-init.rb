@@ -1,7 +1,7 @@
 require 'sqlite3'
 require_relative 'config.rb'
 
-db = SQLite3::Database.new QUOTES_DB
+db = SQLite3::Database.new PUCK_DB
 
 # Create the quotes table
 rows = db.execute <<-SQL
