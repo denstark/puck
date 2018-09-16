@@ -1,15 +1,3 @@
-def topUserExists?(params = {})
-  name = params[:name]
-  disc = params[:disc]
-  server = params[:server]
-  rows = $db.execute("SELECT score from top WHERE name = ? AND discriminator = ? AND server = ?;", [name, disc, server])
-  if rows.empty?
-    return false
-  else
-    return true
-  end
-end
-
 def topAddScore(params = {})
   name = params[:name]
   disc = params[:disc]
