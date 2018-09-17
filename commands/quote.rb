@@ -38,7 +38,6 @@ def printQuote(event, quote)
     embed.colour = 0x7efd91
     embed.timestamp = Time.at(quote[:date])
     embed.description = quote[:quote]
-    embed.author = Discordrb::Webhooks::EmbedAuthor.new(name: quote[:author])
-    embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "id: #{quote[:id]}")
+    embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "added by: #{quote[:author]} | id: #{quote[:id]}")
   end
 end
