@@ -5,3 +5,9 @@ Ideas:
 - Upload a random berserk page? Can use Bot.send_file to send images
 - Weather command (fetches data from openweathermap.org) w/ air quality index (aqi)
 - Delete quotes?
+- Markov chain generation
+    - For the last hour of chat?
+    - From a random subset of quotes?
+    - From all chat history?
+    - https://github.com/zolrath/marky_markov looks promising
+- Urban dictionary lookup
