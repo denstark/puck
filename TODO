@@ -3,7 +3,5 @@ TODO:
 - Refactor help command to use built in usage attribute (see: https://www.rubydoc.info/gems/discordrb/Discordrb%2FCommands%2FCommandContainer%3Acommand)
 Ideas:
 - Upload a random berserk page? Can use Bot.send_file to send images
-- Create a p!top command that tracks users scores by the number of characters they've typed
 - Weather command (fetches data from openweathermap.org) w/ air quality index (aqi)
-- Search the quote DB to see if a string exists
 - Delete quotes?
