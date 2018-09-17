@@ -14,31 +14,31 @@ $puck.command :quote do |event, *args|
     searchTerms = args.join(' ')
     searchTerms = "%#{searchTerms}%"
     quotes.where(Sequel.ilike(:quote, searchTerms)).limit(5).all do |quote|
-      output += printQuote(quote)
+      printQuote(event, quote)
     end
   when 'id', 'id:'
     args.shift
     id = args[0]
     quote = quotes.where(id: id).first
     if quote != nil
-      output = printQuote(quote)
+      printQuote(event, quote)
     elsif quote == nil
       output += "Quote not found!"
     end
   end
   if args.empty?
     quote = quotes.order(Sequel.lit('RANDOM()')).first
-    output = printQuote(quote)
+    printQuote(event, quote)
   end
   output
 end
 
-def printQuote(quote)
-  out = ''
-  out += "#{quote[:quote]}\n\n"
-  out += "**id:** #{quote[:id]}\n"
-  out += "**Author:** #{quote[:author]}\n"
-  out += "**Date:** #{Time.at(quote[:date]).strftime("%B %e, %Y at %H:%M")}\n"
-  out += "\n"
-  return out
+def printQuote(event, quote)
+  event.channel.send_embed do |embed|
+    embed.colour = 0x7efd91
+    embed.timestamp = Time.at(quote[:date])
+    embed.description = quote[:quote]
+    embed.author = Discordrb::Webhooks::EmbedAuthor.new(name: quote[:author])
+    embed.footer = Discordrb::Webhooks::EmbedFooter.new(text: "id: #{quote[:id]}")
+  end
 end
