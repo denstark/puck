@@ -7,20 +7,19 @@ $puck.command :quote do |event, *args|
   when 'add'
     args.shift
     quote = args.join(' ')
-    qid = quotes.insert(author: event.user.name, quote: quote, date: Time.now.to_i)
+    qid = quotes.insert(author: event.user.name, quote: quote, server: event.user.server.id, date: Time.now.to_i)
     printQuote(event, quotes.first(:id => qid))
-    output = "Quote added!"
   when 'search'
     args.shift
     searchTerms = args.join(' ')
     searchTerms = "%#{searchTerms}%"
-    quotes.where(Sequel.ilike(:quote, searchTerms)).limit(5).all do |quote|
+    quotes.where(server: event.user.server.id).where(Sequel.ilike(:quote, searchTerms)).limit(5).all do |quote|
       printQuote(event, quote)
     end
   when 'id', 'id:'
     args.shift
     id = args[0]
-    quote = quotes.where(id: id).first
+    quote = quotes.where(server: event.user.server.id).where(id: id).first
     if quote != nil
       printQuote(event, quote)
     elsif quote == nil
@@ -28,7 +27,7 @@ $puck.command :quote do |event, *args|
     end
   end
   if args.empty?
-    quote = quotes.order(Sequel.lit('RANDOM()')).first
+    quote = quotes.where(server: event.user.server.id).order(Sequel.lit('RANDOM()')).first
     printQuote(event, quote)
   end
   output

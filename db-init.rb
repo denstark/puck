@@ -9,6 +9,7 @@ DB.create_table? :quotes do
   primary_key :id
   String :author, text: true
   String :quote, text: true
+  Integer :server
   Integer :date
 end
 

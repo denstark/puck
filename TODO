@@ -1,6 +1,5 @@
 TODO:
 - Update top command to use embeds (https://leovoel.github.io/embed-visualizer/)
-- Update to be able to be in multiple servers at a time
 - Refactor help command to use built in usage attribute (see: https://www.rubydoc.info/gems/discordrb/Discordrb%2FCommands%2FCommandContainer%3Acommand)
 Ideas:
 - Upload a random berserk page? Can use Bot.send_file to send images
