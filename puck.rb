@@ -3,6 +3,9 @@ require 'sqlite3'
 require 'require_all'
 require 'sequel'
 require 'uri'
+require 'json'
+require 'net/http'
+require 'geocoder'
 
 require_relative 'config.rb'
 DB = Sequel.connect("sqlite://#{PUCK_DB}")

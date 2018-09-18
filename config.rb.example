@@ -1,3 +1,4 @@
 DISCORD_TOKEN = "" # Your discord bot token
 DISCORD_CLIENT_ID = 0 # Your discord application client ID
 PUCK_DB = "" # Path to puck's sqlite3 db file
+DARKSKY_API_KEY = "" # Your Dark Sky API key for weather calls
