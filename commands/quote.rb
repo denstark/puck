@@ -7,7 +7,8 @@ $puck.command :quote do |event, *args|
   when 'add'
     args.shift
     quote = args.join(' ')
-    quotes.insert(author: event.user.name, quote: quote, date: Time.now.to_i)
+    qid = quotes.insert(author: event.user.name, quote: quote, date: Time.now.to_i)
+    printQuote(event, quotes.first(:id => qid))
     output = "Quote added!"
   when 'search'
     args.shift
