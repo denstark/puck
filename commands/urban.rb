@@ -1,8 +1,13 @@
 $commands["urban"] = "Get a definition for a word from urban dictionary."
 
 $puck.command :urban do |event, *args|
-  word = args.join(' ')
-  url = "https://api.urbandictionary.com/v0/define?term=#{word}"
+  if args[0] == nil
+    url = "https://api.urbandictionary.com/v0/random"
+  else
+    word = args.join(' ')
+    url = "https://api.urbandictionary.com/v0/define?term=#{word}"
+  end
+
   puts "Pulling: #{url}"
   uri = URI(url)
   response = Net::HTTP.get(uri)
