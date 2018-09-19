@@ -2,3 +2,4 @@
 config.rb
 quotes
 .idea*
+.DS_Store
