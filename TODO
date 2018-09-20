@@ -1,12 +1,7 @@
 TODO:
-- Update top command to use embeds (https://leovoel.github.io/embed-visualizer/)
-- Update fortune command to use embeds as well
 - Refactor help command to use built in usage attribute (see: https://www.rubydoc.info/gems/discordrb/Discordrb%2FCommands%2FCommandContainer%3Acommand)
 Ideas:
-- p!doubt command that sends doubt.jpg
 - Upload a random berserk page? Can use Bot.send_file to send images
-- Weather command (fetches data from openweathermap.org) w/ air quality index (aqi)
-- Delete quotes?
 - Markov chain generation
     - For the last hour of chat?
     - From a random subset of quotes?
