@@ -1,6 +1,6 @@
-$commands["timeat"] = "Get the current time in a city's timezone"
+$commands["time"] = "Get the current time in a city's timezone"
 
-$puck.command :timeat do |event, *args|
+$puck.command :time do |event, *args|
  offset = nil
  if args.empty?
    event << "You have to put in a city"
@@ -11,7 +11,7 @@ $puck.command :timeat do |event, *args|
  puts city
  case city
  when "london"
-   offset = "+00:00"
+   offset = "+01:00"
  when "seattle"
    offset = "-09:00"
  when "philadelphia", "philly", "boston"
