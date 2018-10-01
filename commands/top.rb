@@ -4,7 +4,6 @@ $puck.command :top do |event, *args|
   serverId = event.user.server.id
   serverName = event.user.server.name
   top = DB[:top]
-  chrisScore = top.where(server: serverScore)
   rows = top.where(server: serverId).reverse_order(:score).limit(10)
   num = 1
   output = ''
