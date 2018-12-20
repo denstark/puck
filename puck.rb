@@ -7,6 +7,7 @@ require 'json'
 require 'net/http'
 require 'geocoder'
 require 'mtg_sdk'
+require 'tzinfo'
 
 require_relative 'config.rb'
 DB = Sequel.connect("sqlite://#{PUCK_DB}")

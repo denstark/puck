@@ -3,22 +3,27 @@ $commands["time"] = "Get the current time in a city's timezone"
 $puck.command :time do |event, *args|
  offset = nil
  if args.empty?
-   event << "You have to put in a city"
+   event << "You have to supply a city or timezone identifier (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)"
    return
  end
+ cities = {
+   "london" => "Europe/London",
+   "seattle" => "America/Los_Angeles",
+   "philadelphia" => "America/New_York",
+   "boston" => "America/New_York",
+}
  city = args[0]
- city = city.downcase
- puts city
- case city
- when "london"
-   offset = "+01:00"
- when "seattle"
-   offset = "-09:00"
- when "philadelphia", "philly", "boston"
-   offset = "-04:00"
+ cityD = city.downcase
+ idents = TZInfo::Timezone.all_identifiers
+ if cities.key?(cityD)
+  tz = TZInfo::Timezone.get(cities[cityD])
+ elsif idents.include?(city)
+  tz = TZInfo::Timezone.get(city)
  else
-   event << "Arguments are London, Philadelphia, Boston"
-   return
+  event << "Incorrect city or timezone identifier"
+  return
  end
- "The time in #{city.capitalize} is " + Time.now.getlocal(offset).strftime("%a %I:%M%p").to_s
+
+ puts city
+ "The time in #{tz.friendly_identifier} is " + tz.now.strftime("%a %I:%M%p").to_s
 end
