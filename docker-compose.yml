@@ -1,0 +1,12 @@
+---
+version: "2"
+services:
+  puck:
+    image: puck:latest
+    container_name: puck
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - /path/to/config.rb:/app/config.rb
+      - /path/to/quotesdb.sqlite3:/quotes.sqlite3
+    restart: unless-stopped

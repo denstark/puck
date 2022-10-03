@@ -15,9 +15,6 @@ COPY --from=dependencies /usr/local/bundle/ /usr/local/bundle/
 
 COPY . /app
 
-RUN adduser -D puck
-user puck
-
 WORKDIR /app
 
 CMD ["ruby", "puck.rb"]
