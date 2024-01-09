@@ -7,6 +7,7 @@ services:
     environment:
       - TZ=America/New_York
     volumes:
-      - /path/to/config.rb:/app/config.rb
-      - /path/to/quotesdb.sqlite3:/quotes.sqlite3
+      - ./config.rb:/app/config.rb
+      - ./quotesdb.sqlite3:/quotes.sqlite3
+      - .:/app
     restart: unless-stopped
